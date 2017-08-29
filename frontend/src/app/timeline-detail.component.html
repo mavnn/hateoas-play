@@ -1,0 +1,12 @@
+<div *ngIf="timeline" style="text-align:center">
+  <h2>{{ timeline.title }}</h2>
+  <li>
+    <ul *ngFor="let e of timelineEvents" >{{ e.date }} - {{ e.title }}</ul>
+  </li>
+  <h3>Create new event</h3>
+  <label>Event title:</label>
+  <input [(ngModel)]="newEventTitle">
+  <label>Event date:</label>
+  <input [(ngModel)]="newEventDate" placeholder="yyyy-MM-dd" >
+  <button (click)="newEvent()">Create!</button>
+<div>

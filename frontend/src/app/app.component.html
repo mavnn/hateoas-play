@@ -1,0 +1,32 @@
+<div style="text-align:center">
+  <div *ngIf="fatalError" >
+    <h2>Something went very wrong</h2>
+    <p>fatelError.error</p>
+  </div>
+  <h1 *ngIf="!user.name" >
+    Welcome to {{title}}!
+  </h1>
+  <div *ngIf="showLogin" >
+    <label>Username: </label>
+    <input [(ngModel)]="loginDetails.username" placeholder="Username" >
+    <label>Password: </label>
+    <input [(ngModel)]="loginDetails.password" type="password" >
+    <button (click)="tryLogin()">Log in!</button>
+  </div>
+  <div *ngIf="user.name" >
+    <h1 *ngIf="user.name" >
+      Welcome to {{user.name}}!
+    </h1>
+    <h2>Timelines</h2>
+    <ul>
+      <li *ngFor="let timeline of timelines">
+        <button (click)="onTimelineSelected(timeline)" >{{ timeline.title }}</button>
+      </li>
+    </ul>
+    <timeline-detail *ngIf="selectedTimeline" [timeline]="selectedTimeline"></timeline-detail>
+    <h3>Create new timeline</h3>
+    <label>Timeline title:</label>
+    <input [(ngModel)]="newTimelineTitle">
+    <button (click)="newTimeline()">Create!</button>
+  </div>
+<div>
